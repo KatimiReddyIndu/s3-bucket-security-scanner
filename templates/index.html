@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>S3 Security Scanner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <h1>S3 Bucket Security Scanner</h1>
+
+    <button onclick="runScan()">Run Scan</button>
+
+    <div id="output"></div>
+
+    <script>
+        function runScan() {
+            fetch("/scan")
+            .then(response => response.json())
+            .then(data => {
+                let result = "";
+                
+                data.forEach(bucket => {
+                    let riskClass = bucket.risk.toLowerCase();
+                    
+                result += `
+                    <div class="card">
+                        <h3>${bucket.bucket_name}</h3>
+                        <p>Public Policy: ${bucket.public_policy}</p>
+                        <p>Public ACL: ${bucket.public_acl}</p>
+                        <p>Encryption: ${bucket.encryption}</p>
+                        <p>Versioning: ${bucket.versioning}</p>
+                        <p>Risk: <span class="${riskClass}">${bucket.risk}</span></p>
+                    </div>
+                `;
+            });
+
+            document.getElementById("output").innerHTML = result;
+        });
+}
+</script>
+
+</body>
+</html>

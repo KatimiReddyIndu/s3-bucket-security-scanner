@@ -1,0 +1,18 @@
+[
+    {
+        "bucket_name": "public-bucket-nithin",
+        "public_policy": true,
+        "public_acl": false,
+        "encryption": true,
+        "versioning": "Disabled",
+        "risk": "HIGH"
+    },
+    {
+        "bucket_name": "secure-bucket-nithin",
+        "public_policy": false,
+        "public_acl": false,
+        "encryption": true,
+        "versioning": "Disabled",
+        "risk": "MEDIUM"
+    }
+]
