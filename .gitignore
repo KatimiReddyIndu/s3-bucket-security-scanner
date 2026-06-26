@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project private/output files
+private.txt
+test.txt
+s3_report.json
